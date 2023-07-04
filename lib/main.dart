@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'homeScreen.dart';
+import 'views/widgets/homeScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Notes',
       theme: ThemeData(
         brightness: Brightness.dark,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+
       ),
-      home: Notes_Home_Screen(),
+      home: const NotesHomeScreen(),
     );
   }
 }
