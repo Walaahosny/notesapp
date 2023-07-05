@@ -1,6 +1,6 @@
+import 'package:appnotess/views/Screens/addNoteScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'views/widgets/homeScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Notes',
       theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-      home: const NotesHomeScreen(),
+      home: const addNotesScreen(),
     );
   }
 }

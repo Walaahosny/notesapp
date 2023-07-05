@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constens/constes.dart';
+import '../constens/constes.dart';
 
 class CustomTextFiled extends StatelessWidget {
   final String hint;
@@ -16,7 +16,7 @@ class CustomTextFiled extends StatelessWidget {
       cursorColor: KprimaryColor,
       decoration: InputDecoration(
           hintText: hint,
-          hintStyle: const TextStyle(color: KprimaryColor),
+          //hintStyle: const TextStyle(color: KprimaryColor),
           border: buildOutlineInputBorder(KprimaryColor),
           enabledBorder: buildOutlineInputBorder(),
           focusedBorder: buildOutlineInputBorder(KprimaryColor)),

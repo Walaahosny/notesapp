@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'NoteItem.dart';
-import 'NotesListView.dart';
-import 'appBarforBody.dart';
+import '../../widgets/NotesListView.dart';
+import '../../widgets/appBarforBody.dart';
 
-class NotesBody extends StatelessWidget {
-  const NotesBody({super.key});
+class addNotesBody extends StatelessWidget {
+  const addNotesBody({super.key});
+
 
   @override
   Widget build(BuildContext context) {
