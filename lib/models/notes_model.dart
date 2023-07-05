@@ -9,7 +9,7 @@
 ; is he name of file
 * this attention @HiveType(typeId: 0)  said to package of build runner this place has  code will  be generate
 * and the write this command in terminal flutter packages pub run build_runner build
-*
+*then go to main file to main file to initialize Hive and make box of hive to store data "use openbox and detect name of it as constant"
 * */
 import 'package:hive/hive.dart';
 part 'notes_model.g.dart';
