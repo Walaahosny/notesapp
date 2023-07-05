@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../Pagesbody/body_editNote_screen.dart';
-class editNotesScreen extends StatelessWidget {
-  const editNotesScreen({super.key});
+import '../Pages_body/body_editNote_screen.dart';
+class EditNotesScreen extends StatelessWidget {
+  const EditNotesScreen({super.key});
+
 
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: bodyEditNoteScreen(),);
+    return const Scaffold(body: BodyEditNoteScreen(),);
   }
 }

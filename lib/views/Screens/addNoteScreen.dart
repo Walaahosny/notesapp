@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/add_note_bottom_sheet.dart';
-import '../Pagesbody/body_addNote_screen.dart';
+import '../Pages_body/body_addNote_screen.dart';
 
 
 
-class addNotesScreen extends StatelessWidget {
-  const addNotesScreen({super.key});
+class AddNotesScreen extends StatelessWidget {
+  const AddNotesScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {

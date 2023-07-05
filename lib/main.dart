@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Notes',
       theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-      home: const addNotesScreen(),
+      home: const AddNotesScreen(),
     );
   }
 }

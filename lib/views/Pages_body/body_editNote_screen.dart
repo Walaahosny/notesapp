@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/CustomTextFiled.dart';
-import '../../widgets/NotesListView.dart';
-import '../../widgets/appBarforAddnoteBody.dart';
-class bodyEditNoteScreen extends StatelessWidget {
-  const bodyEditNoteScreen({super.key});
+import '../../widgets/appBarForAdd-noteBody.dart';
+class BodyEditNoteScreen extends StatelessWidget {
+  const BodyEditNoteScreen({super.key});
+
+
 
 
 
