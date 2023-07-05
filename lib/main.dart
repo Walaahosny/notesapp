@@ -15,13 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Notes',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-
-      ),
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
       home: const NotesHomeScreen(),
     );
   }
 }
-
-
