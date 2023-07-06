@@ -11,6 +11,19 @@
 * and the write this command in terminal flutter packages pub run build_runner build
 *then go to main file to main file to initialize Hive and make box of hive to store data "use openbox and detect name of it as constant"
 * */
+
+
+/*used hive to build local database can use for pure dart project ,
+hive flutter extension for  package hive
+,build generator used to generate code
+,hive generate to generate code for flutter
+hive store date as key and value
+date store in box
+date we store should be primitives date type"string int double  not object"
+if you need to store object " sample if u need store object for note"
+you should tell hive through typeAdapter throught generate automatically
+and make model to extend HiveObject
+*/
 import 'package:hive/hive.dart';
 part 'notes_model.g.dart';
 @HiveType(typeId: 0)
