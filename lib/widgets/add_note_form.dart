@@ -1,4 +1,5 @@
 import 'package:appnotess/cubit/add_notes_cubit/add_notes_cubit.dart';
+import 'package:appnotess/cubit/add_notes_cubit/add_notes_state.dart';
 import 'package:appnotess/views/Screens/addNoteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,24 +51,29 @@ class _AddNoteFormState extends State<AddNoteForm> {
             const SizedBox(
               height: 40,
             ),
-            customButtom(
-              ontap: () {
-                //if formkey if not null
-                if (formkey.currentState!.validate()) {
-                  formkey.currentState!.save();
+            //to listen on loading use blocbuilder
+            BlocBuilder<AddNotesCubit,AddNotesState>(
+                builder: (BuildContext context, state) {
+              return customButtom(
+                isLoading: state is AddNotesLoading ?true:false,
+                ontap: () {
+                  //if formkey if not null
+                  if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
 
-                  var notesmodel = NoteModel(
-                      title: title!,
-                      subtitle: subtitle!,
-                      date: DateTime.now().toString(),
-                      color: Colors.amber.value);
-                  BlocProvider.of<AddNotesCubit>(context).addNote(notesmodel);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
-              },
-            ),
+                    var notesmodel = NoteModel(
+                        title: title!,
+                        subtitle: subtitle!,
+                        date: DateTime.now().toString(),
+                        color: Colors.amber.value);
+                    BlocProvider.of<AddNotesCubit>(context).addNote(notesmodel);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
+            }),
             SizedBox(
               height: 20,
             ),
