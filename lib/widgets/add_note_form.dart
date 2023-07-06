@@ -1,7 +1,12 @@
+import 'package:appnotess/cubit/add_notes_cubit/add_notes_cubit.dart';
+import 'package:appnotess/views/Screens/addNoteScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../models/notes_model.dart';
 import 'CustomTextFiled.dart';
 import 'custombuttomforbottomSheet.dart';
+
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
 
@@ -32,7 +37,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 title = value;
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             CustomTextFiled(
@@ -42,19 +47,24 @@ class _AddNoteFormState extends State<AddNoteForm> {
               hint: 'Content',
               maxLines: 10,
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             customButtom(
-              ontap: (){
+              ontap: () {
                 //if formkey if not null
-                if(formkey.currentState!.validate()){
+                if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
-                }else{
-                  autovalidateMode=AutovalidateMode.always;
-                  setState(() {
 
-                  });
+                  var notesmodel = NoteModel(
+                      title: title!,
+                      subtitle: subtitle!,
+                      date: DateTime.now().toString(),
+                      color: Colors.amber.value);
+                  BlocProvider.of<AddNotesCubit>(context).addNote(notesmodel);
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {});
                 }
               },
             ),
