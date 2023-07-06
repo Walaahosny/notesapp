@@ -1,8 +1,9 @@
-import 'package:appnotess/constens/constes.dart';
+import 'package:appnotess/cubit/add_notes_cubit/add_notes_cubit.dart';
+import 'package:appnotess/cubit/add_notes_cubit/add_notes_state.dart';
 import 'package:flutter/material.dart';
-
-import 'CustomTextFiled.dart';
-import 'custombuttomforbottomSheet.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'add_note_form.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -10,74 +11,24 @@ class AddNoteBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
-        child: AddNoteForm(),
+        child: BlocConsumer<AddNotesCubit, AddNotesState>(
+          builder: (BuildContext context, state) {
+            return ModalProgressHUD(
+                inAsyncCall: state is AddNotesLoading ? true : false,
+                child: const AddNoteForm());
+          },
+          listener: (BuildContext context, Object? state) {
+            if (state is AddNotesFailure) {
+              print("failed ${state.errMessage}");
+            }
+            if (state is AddNotesSuccess) {
+              Navigator.pop(context);
+            }
+          },
+        ),
       ),
     );
-  }
-}
-
-class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({super.key});
-
-  @override
-  State<AddNoteForm> createState() => _AddNoteFormState();
-}
-
-class _AddNoteFormState extends State<AddNoteForm> {
-  final GlobalKey<FormState> formkey = GlobalKey();
-//add autovalidatenote to check from text you type
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title;
-  String? subtitle;
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-        key: formkey,
-        autovalidateMode: autovalidateMode,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextFiled(
-              hint: 'Title',
-              maxLines: 1,
-              onsaved: (value) {
-                title = value;
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextFiled(
-              onsaved: (value) {
-                subtitle = value;
-              },
-              hint: 'Content',
-              maxLines: 10,
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            customButtom(
-              ontap: (){
-                //if formkey if not null
-                if(formkey.currentState!.validate()){
-                  formkey.currentState!.save();
-                }else{
-                  autovalidateMode=AutovalidateMode.always;
-                  setState(() {
-
-                  });
-                }
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ));
   }
 }
