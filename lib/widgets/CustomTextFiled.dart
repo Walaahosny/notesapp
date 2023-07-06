@@ -7,11 +7,20 @@ class CustomTextFiled extends StatelessWidget {
   final int maxLines;
 
   const CustomTextFiled(
-      {super.key, required this.hint, required this.maxLines});
-
+      {super.key, required this.hint, required this.maxLines, this.onsaved});
+  final void Function(String?)? onsaved;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        //if filed empty return msg else return true ,?? is null check operator is the perilous value is null take the next value
+        if (value?.isEmpty ?? true) {
+          return 'Filed is required';
+        } else {
+          return null;
+        }
+      },
+      onSaved: onsaved,
       maxLines: maxLines,
       cursorColor: KprimaryColor,
       decoration: InputDecoration(
