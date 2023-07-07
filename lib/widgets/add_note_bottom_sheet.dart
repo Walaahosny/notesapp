@@ -1,7 +1,7 @@
 import 'package:appnotess/cubit/add_notes_cubit/add_notes_cubit.dart';
 import 'package:appnotess/cubit/add_notes_cubit/add_notes_state.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../cubit/read_notes_cubit/readNotesCubit.dart';
 import 'add_note_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,6 +31,8 @@ class AddNoteBottomSheet extends StatelessWidget {
             print("failed ${state.errMessage}");
           }
           if (state is AddNotesSuccess) {
+            BlocProvider.of<ReadNotesCubit>(context).ReadFeatchAllnotes();
+
             Navigator.pop(context);
           }
         },

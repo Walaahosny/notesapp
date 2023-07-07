@@ -13,26 +13,23 @@ class AddNotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) { return ReadNotesCubit(); },
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              //make buttomsheet scroll when keyboard apear
-              isScrollControlled: true,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                context: context,
-                builder: (context) {
-                  return const AddNoteBottomSheet();
-                });
-          },
-          backgroundColor: Colors.white,
-          child: const Icon(Icons.add),
-        ),
-        body: const addNotesBody(),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            //make buttomsheet scroll when keyboard apear
+            isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              context: context,
+              builder: (context) {
+                return const AddNoteBottomSheet();
+              });
+        },
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.add),
       ),
+      body: const addNotesBody(),
     );
   }
 }

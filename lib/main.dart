@@ -1,4 +1,5 @@
 import 'package:appnotess/cubit/add_notes_cubit/add_notes_cubit.dart';
+import 'package:appnotess/cubit/read_notes_cubit/readNotesCubit.dart';
 import 'package:appnotess/views/Screens/addNoteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,11 +25,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Notes',
-      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-      home: const AddNotesScreen(),
+    return BlocProvider(
+
+      create: (BuildContext context) =>ReadNotesCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Notes',
+        theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
+        home: const AddNotesScreen(),
+      ),
     );
   }
 }
