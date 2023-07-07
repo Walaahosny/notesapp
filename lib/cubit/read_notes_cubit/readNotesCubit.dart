@@ -7,15 +7,15 @@ import '../../constens/constes.dart';
 
 class ReadNotesCubit extends Cubit<ReadNotesStates> {
   ReadNotesCubit() : super(ReadNotesInitial());
-
+  List<NoteModel>? notes;
   ReadFeatchAllnotes() async {
-    try {
-      var notesBox = Hive.box<NoteModel>(kNotesBox);
+    //try {
+    var noteBox = Hive.box<NoteModel>(kNotesBox);
 //return data from box
-      List<NoteModel> notes = notesBox.values.toList();
-      emit(ReadNotesSuccess(notes));
-    } catch (e) {
-      emit(ReadNotesFailure(e.toString()));
-    }
+    notes = noteBox.values.toList();
+    //emit(ReadNotesSuccess(notes));
+    // } catch (e) {
+    //emit(ReadNotesFailure(e.toString()));
+    //}
   }
 }

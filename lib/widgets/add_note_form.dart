@@ -1,8 +1,8 @@
 import 'package:appnotess/cubit/add_notes_cubit/add_notes_cubit.dart';
 import 'package:appnotess/cubit/add_notes_cubit/add_notes_state.dart';
-import 'package:appnotess/views/Screens/addNoteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../models/notes_model.dart';
 import 'CustomTextFiled.dart';
@@ -64,7 +64,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     var notesmodel = NoteModel(
                         title: title!,
                         subtitle: subtitle!,
-                        date: DateTime.now().toString(),
+                        date: DateFormat.yMMMd().format.toString(),
                         color: Colors.amber.value);
                     BlocProvider.of<AddNotesCubit>(context).addNote(notesmodel);
                   } else {
