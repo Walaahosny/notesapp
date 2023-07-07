@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 
 import '../models/notes_model.dart';
 import 'CustomTextFiled.dart';
+import 'color_listview.dart';
 import 'custombuttomforbottomSheet.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -50,6 +51,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
             ),
             const SizedBox(
               height: 40,
+            ),
+            const colorListView(),
+            const SizedBox(
+              height: 20,
             ),
             //to listen on loading use blocbuilder
             BlocBuilder<AddNotesCubit, AddNotesState>(
