@@ -7,8 +7,10 @@ class CustomTextFiled extends StatelessWidget {
   final int maxLines;
 
   const CustomTextFiled(
-      {super.key, required this.hint, required this.maxLines, this.onsaved});
+      {super.key, required this.hint, required this.maxLines, this.onsaved, this.onchange});
   final void Function(String?)? onsaved;
+  final void Function(String?)? onchange;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -20,6 +22,7 @@ class CustomTextFiled extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onchange,
       onSaved: onsaved,
       maxLines: maxLines,
       cursorColor: KprimaryColor,
