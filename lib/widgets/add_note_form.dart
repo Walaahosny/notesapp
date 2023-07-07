@@ -52,10 +52,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
               height: 40,
             ),
             //to listen on loading use blocbuilder
-            BlocBuilder<AddNotesCubit,AddNotesState>(
+            BlocBuilder<AddNotesCubit, AddNotesState>(
                 builder: (BuildContext context, state) {
               return customButtom(
-                isLoading: state is AddNotesLoading ?true:false,
+                isLoading: state is AddNotesLoading ? true : false,
                 ontap: () {
                   //if formkey if not null
                   if (formkey.currentState!.validate()) {
